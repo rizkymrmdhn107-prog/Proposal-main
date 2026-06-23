@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surat Permohonan Izin</title>
+
+<style>
+@page {
+    size: A4;
+    margin: 20mm;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:20px;
+    background:#dcdcdc;
+    font-family:"Times New Roman", serif;
+}
+
+.kertas{
+    width:210mm;
+    min-height:297mm;
+    margin:auto;
+    background:white;
+    padding:25mm;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+.tanggal{
+    text-align:right;
+    margin-bottom:30px;
+    font-size:12pt;
+}
+
+.judul{
+    text-align:center;
+    font-size:18pt;
+    font-weight:bold;
+    margin-bottom:40px;
+    text-transform:uppercase;
+}
+
+.isi{
+    font-size:12pt;
+    line-height:1.9;
+    text-align:justify;
+}
+    
+.data{
+    margin-left:25px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.data td{
+    padding:4px 8px;
+}
+
+.ttd{
+    margin-top:50px;
+    width:250px;
+    margin-left:auto;
+    text-align:center;
+}
+
+.ttd img{
+    width:180px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+}
+
+.nama{
+    margin-top:-5px;
+    text-decoration:underline;
+    font-weight:bold;  
+}
+
+.tombol{
+    text-align:center;
+    margin-top:100px;
+}
+
+button{
+    padding:12px 35px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    margin:10px;
+}
+
+.setuju{
+    background:#28a745;
+    color:white;
+}
+
+.tidak{
+    background:#dc3545;
+    color:white;
+}
+
+#tidakSetuju{
+    position:relative;
+    transition:0.2s;
+}
+
+#hasil{
+    display:none;
+    margin-top:30px;
+    padding:20px;
+    border-radius:8px;
+    text-align:center;
+    font-size:18px;
+}
+
+@media print{
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .kertas{
+        width:100%;
+        min-height:auto;
+        box-shadow:none;
+    }
+
+    .tombol,
+    #hasil{
+        display:none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="kertas">
+
+<div class="tanggal">
+Cimahi, <span id="tanggal"></span>
+</div>
+
+<div class="judul">
+Surat Permohonan Izin
+</div>
+
+<div class="isi">
+
+<p>
+Kepada Yth.<br>
+Bapak/Ibu Orang Tua Mei
+</p>
+
+<p>
+Dengan hormat,
+</p>
+
+<p>
+Saya yang bertanda tangan dibawah ini :
+</p>
+    
+<table class="data">
+<tr>
+    <td width="120">Nama</td>
+    <td width="20">:</td>
+    <td>Rizky</td>
+</tr>
+
+<tr>
+    <td>Status</td>
+    <td>:</td>
+    <td>Teman Mei</td>
+</tr>
+
+<tr>
+    <td>Alamat</td>
+    <td>:</td>
+    <td>Jl. Somawinata Blok Anggrek</td>
+</tr>
+</table>
+   
+<p>
+Saya bermaksud memohon izin kepada Bapak/Ibu untuk mengajak putri Bapak/Ibu yang bernama Meiriska untuk bermain dan menghabiskan waktu bersama dalam kegiatan yang positif. Saya berjanji akan menjaga sikap, keselamatan, serta kenyamanan selama kegiatan berlangsung. Adapun kegiatan tersebut akan dilaksanakan pada :
+</p>
+<table class="data">
+<tr>
+    <td width="120">Hari/Tanggal</td>
+    <td width="20">:</td>
+    <td>Sabtu, 18 Juli 2026</td>
+</tr>
+
+<tr>
+    <td>Jam</td>
+    <td>:</td>
+    <td>18.30 WIB s/d 23.00 WIB</td>
+</tr>
+
+<tr>
+    <td>Tempat</td>
+    <td>:</td>
+    <td>Lapangan Wiradhika SECAPAAD</td>
+</tr>
+</table>
+ 
+<p>
+Kegiatan ini bertujuan untuk menjalin silaturahmi, mempererat hubungan pertemanan, dan mengisi waktu luang dengan hal-hal yang bermanfaat.
+</p>
+
+<p>
+Besar harapan saya agar Bapak/Ibu berkenan memberikan izin. Atas perhatian serta kepercayaannya, saya mengucapkan terima kasih.
+</p>
+
+
+<div class="ttd">
+    Hormat saya,
+
+    <img src="ttd.jpg" alt="Tanda Tangan">
+
+    <div class="nama">Rizky</div>
+</div>
+
+</div>
+
+<div class="tombol">
+<button class="setuju" onclick="setuju()">
+✅ Setuju
+</button>
+
+<button id="tidakSetuju" class="tidak">
+❌ Tidak Setuju
+</button>
+
+<div id="hasil"></div>
+
+</div>
+
+<script>
+const today = new Date();
+const options = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+};
+document.getElementById("tanggal").innerHTML =
+today.toLocaleDateString('id-ID', options);
+
+function setuju(){
+    const hasil = document.getElementById("hasil");
+
+    hasil.style.display = "block";
+    hasil.style.background = "#d4edda";
+    hasil.style.color = "#155724";
+
+    hasil.innerHTML =
+    "🎉 Terima kasih banyak Bapak/Ibu telah memberikan izin! Saya sangat senang dan akan menjaga kepercayaan yang telah diberikan. Semoga kegiatan kami berjalan lancar dan menyenangkan. 😊";
+}
+    
+const tombolTidak = document.getElementById("tidakSetuju");
+
+tombolTidak.addEventListener("mouseover", () => {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 150 - 75;
+
+    tombolTidak.style.transform =
+        `translate(${x}px, ${y}px)`;
+});
+
+tombolTidak.addEventListener("touchstart", () => {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 150 - 75;
+
+    tombolTidak.style.transform =
+        `translate(${x}px, ${y}px)`;
+});
+
+tombolTidak.addEventListener("click", () => {
+    alert("😆 Eits... tombol ini sedang tidak tersedia.");
+});
+</script>
+
+</body>
+</html>
